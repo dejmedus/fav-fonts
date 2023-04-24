@@ -4,15 +4,21 @@ import { filtersKey } from '@/data/filtersKey';
 
 export function useFonts() {
   const [allFonts, setAllFonts] = useState([]);
-  const [filters, setFilters] = useState([])
   const [fonts, setFonts] = useState([]);
 
-  const [amount, setAmount] = useState(50)
+  const [filters, setFilters] = useState([]);
+  const [amount, setAmount] = useState(50);
 
   const [pageTotal, setPageTotal] = useState(0);
-  const [page, setPage] = useState(null);
+  const [page, setPage] = useState(0);
+  const [reset, setReset] = useState(false);
+  const resetPage = () => {
+    page == 0 ? setReset(cur => !cur) : setPage(0);
+  }
+
   const [paginatedFonts, setPaginatedFonts] = useState([]);
   const [stylesheet, setStylesheet] = useState('');
+
 
   useEffect(() => {
     console.log('fetching google fonts');
@@ -45,13 +51,13 @@ export function useFonts() {
       }
       setFonts(shownFonts);
       setPageTotal(Math.ceil(shownFonts.length / amount) - 1);
-      setPage(0);
+      resetPage();
     }
   }, [allFonts, filters]);
 
   useEffect(() => {
     if (allFonts.length > 0) {
-
+      console.log('Updating paginated fonts.');
       const start = page * amount;
       const end = Math.min(start + amount, fonts.length);
       const newPaginatedFonts = fonts.slice(start, end)
@@ -61,11 +67,10 @@ export function useFonts() {
         query += (newPaginatedFonts[i].family).replace(' ', '+') + '|'
       }
 
-      setPaginatedFonts(newPaginatedFonts);
       setStylesheet(`https://fonts.googleapis.com/css?family=${query}`);
-      console.log(`https://fonts.googleapis.com/css?family=${query}`);
+      setPaginatedFonts(newPaginatedFonts);
     }
-  }, [page])
+  }, [page, reset])
 
   function changePage(newPage) {
     if (newPage >= 0 && newPage <= pageTotal) {
@@ -73,15 +78,15 @@ export function useFonts() {
     }
   }
 
-  function changePage(newFilters) {
+  function changeFilters(newFilters) {
     setFilters(newFilters);
   }
 
   function changeAmount(newAmount) {
     setAmount(newAmount);
     setPageTotal(Math.ceil(fonts.length / newAmount) - 1);
-    setPage(0);
+    resetPage();
   }
 
-  return { fonts: paginatedFonts, pageTotal, page, changePage, setFilters, setAmount, stylesheet };
+  return { fonts: paginatedFonts, pageTotal, page, changePage, changeFilters, changeAmount, stylesheet };
 }
