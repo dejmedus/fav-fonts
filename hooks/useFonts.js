@@ -10,10 +10,12 @@ export function useFonts() {
   const [amount, setAmount] = useState(50)
 
   const [pageTotal, setPageTotal] = useState(0);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(null);
   const [paginatedFonts, setPaginatedFonts] = useState([]);
+  const [stylesheet, setStylesheet] = useState('');
 
   useEffect(() => {
+    console.log('fetching google fonts');
     async function getFontsData() {
       // fetch webfonts from api route
       const res = await fetch('/api/webfonts');
@@ -30,27 +32,39 @@ export function useFonts() {
   }, [])
 
   useEffect(() => {
-    let shownFonts = allFonts;
-    if (filters.length !== 0) {
-      const families = new Set(filters.flatMap(key => filtersKey[key]));
-      shownFonts = allFonts.filter(a => families.has(a.family));
+    if (allFonts.length > 0) {
+      let shownFonts = allFonts;
+      if (filters.length !== 0) {
+        const families = new Set(filters.flatMap(key => filtersKey[key]));
+        shownFonts = allFonts.filter(a => families.has(a.family));
 
-      if (shownFonts.length == 0) {
-        console.error('No fonts of filter families')
-        shownFonts = allFonts
+        if (shownFonts.length == 0) {
+          console.error('No fonts of filter families')
+          shownFonts = allFonts
+        }
       }
+      setFonts(shownFonts);
+      setPageTotal(Math.ceil(shownFonts.length / amount) - 1);
+      setPage(0);
     }
-    console.log('update filtered fonts and page total. set page to 0')
-    setFonts(shownFonts);
-    setPageTotal(Math.ceil(shownFonts.length / amount) - 1);
-    setPage(0);
-  }, [filters]);
+  }, [allFonts, filters]);
 
   useEffect(() => {
-    console.log('get paginated fonts')
-    const start = page * amount;
-    const end = Math.min(start + amount, fonts.length);
-    setPaginatedFonts(fonts.slice(start, end));
+    if (allFonts.length > 0) {
+
+      const start = page * amount;
+      const end = Math.min(start + amount, fonts.length);
+      const newPaginatedFonts = fonts.slice(start, end)
+
+      let query = ''
+      for (let i = 0; i < amount; i++) {
+        query += (newPaginatedFonts[i].family).replace(' ', '+') + '|'
+      }
+
+      setPaginatedFonts(newPaginatedFonts);
+      setStylesheet(`https://fonts.googleapis.com/css?family=${query}`);
+      console.log(`https://fonts.googleapis.com/css?family=${query}`);
+    }
   }, [page])
 
   function changePage(newPage) {
@@ -69,5 +83,5 @@ export function useFonts() {
     setPage(0);
   }
 
-  return { fonts: paginatedFonts, pageTotal, page, changePage, setFilters, setAmount };
+  return { fonts: paginatedFonts, pageTotal, page, changePage, setFilters, setAmount, stylesheet };
 }
