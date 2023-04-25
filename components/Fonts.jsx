@@ -16,18 +16,18 @@ function FontCard({ family, category, options }) {
 
     return (<div
         key={family}
-        className="grid justify-between p-4 pt-2 border border-gray-100 rounded shadow-md dark:border-gray-900 sm:p-6 sm:pt-4 min-h-[240px] min-w-[260px]"
+        className="p-4 pt-2 border border-gray-100 rounded shadow-md dark:border-gray-900 sm:p-6 sm:pt-4 min-h-[240px] min-w-[260px]"
     >
         <div>
             <a href={`https://fonts.google.com/specimen/${family}`} target="_blank" className="font-semibold hover:underline font-lg">
                 {family}
             </a>
-            <p className="text-sm italic dark:text-white/60 text-black/60">
+            <p className="mb-4 text-sm italic dark:text-white/60 text-black/60">
                 {category}
             </p>
         </div>
 
-        <div className="grid items-start justify-start overflow-scroll">
+        <div className="h-full overflow-scroll">
             <h3 style={{ fontFamily: family + ', ' + category, fontSize: Math.max(Math.min(options.fontSize, 90), 12) }} className='p-1'>
                 {sampleText}
             </h3>
