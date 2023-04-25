@@ -5,7 +5,7 @@
 - [X] Header with minor navigation *(Logo and Catalog/Featured/Articles/About link list)*
 - [X] Nav with Major navigation / page-manipulation *(search, custom text, font-size, dark/light mode, ~~grid/list mode~~, and reset)*
 - [X] Main section for the font cards
-- [ ] ~~Font cards which display the Font Name, the sample text, and an add button (the font creator is not available via the api, so it is **not** required in tiers 2 or 3)~~
+- [X] Font cards which display the Font Name, the sample text, ~~add button (the font creator is not available via the api, so it is **not** required in tiers 2 or 3)~~ - click on font name to navigate to Google fonts.
 - [X] Button that allows user to click and scroll back up to the top *(there could be up to 959 fonts displayed, so you need this!)*
 - [X] Footer section with your developer information
 
