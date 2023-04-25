@@ -36,6 +36,7 @@ npm run dev
 ### Screenshots
 
 <img width="1273" alt="lightmode" src="https://user-images.githubusercontent.com/59973863/234399632-49eb2d7f-8920-41c8-927e-ca2e8797758b.png">
+<img width="1280" alt="footer" src="https://user-images.githubusercontent.com/59973863/234400961-4a67fce3-3923-4de0-889f-608ba2924594.png">
 <img width="1278" alt="darkmode" src="https://user-images.githubusercontent.com/59973863/234399627-919c21a1-8c9a-46ee-bb4d-f66df150aade.png">
 <img width="1278" alt="loading" src="https://user-images.githubusercontent.com/59973863/234399634-60ad02e0-ce34-4695-a875-2045848b49b8.png">
 
