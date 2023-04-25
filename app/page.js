@@ -6,7 +6,7 @@ import { Pagination } from '@/components/Pagination';
 
 
 export default function Home() {
-  const { fonts, pageTotal, page, changePage, changeTheme, changeAmount, stylesheet } = useFonts();
+  const { fonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, stylesheet } = useFonts();
 
   const [sampleText, setSampleText] = useState('Spinx of black quartz');
   const [fontSize, setFontSize] = useState(24);
@@ -20,7 +20,8 @@ export default function Home() {
     sampleText: setSampleText,
     fontSize: setFontSize,
     amount: changeAmount,
-    theme: changeTheme
+    theme: changeTheme,
+    search: changeSearch
   }
 
   return (
@@ -34,6 +35,10 @@ export default function Home() {
 
 function Filters({ setOptions, options }) {
   return (<div className="flex gap-2 mb-2">
+    <div className='flex gap-2'>
+      <label htmlFor="search">Search:</label>
+      <input className="border border-black" id="sampleText" type="text" placeholder='Search...' onChange={(e) => setOptions.search(e.target.value)} />
+    </div>
     <div className='flex gap-2'>
       <label htmlFor="sampleText">Sample Text:</label>
       <input className="border border-black" id="sampleText" type="text" placeholder='Spinx of black quartz' onChange={(e) => setOptions.sampleText(e.target.value)} />

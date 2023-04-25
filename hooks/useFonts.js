@@ -6,13 +6,14 @@ export function useFonts() {
   const [allFonts, setAllFonts] = useState([]);
   const [fonts, setFonts] = useState([]);
 
+  const [search, setSearch] = useState('');
   const [theme, setTheme] = useState([]);
   const [amount, setAmount] = useState(50);
 
   const [pageTotal, setPageTotal] = useState(0);
   const [page, setPage] = useState(0);
   const [reset, setReset] = useState(false);
-  const getShownFonts = () => {
+  const getPaginatedFonts = () => {
     page == 0 ? setReset(cur => !cur) : setPage(0);
   }
 
@@ -40,6 +41,8 @@ export function useFonts() {
   useEffect(() => {
     if (allFonts.length > 0) {
       let shownFonts = allFonts;
+
+      // Theme
       if (theme.length !== 0) {
         const families = new Set(theme.flatMap(key => filtersKey[key]));
         shownFonts = allFonts.filter(a => families.has(a.family));
@@ -49,11 +52,24 @@ export function useFonts() {
           shownFonts = allFonts
         }
       }
+
+      // Search
+      if (search !== '') {
+        const searchResults = shownFonts.filter(a => a.family.toLowerCase().includes(search));
+        if (searchResults.length == 0) {
+          console.error(`No results for ${search}`)
+        }
+        else {
+          shownFonts = searchResults;
+        }
+      }
+
       setFonts(shownFonts);
       setPageTotal(Math.ceil(shownFonts.length / amount) - 1);
-      getShownFonts();
+      getPaginatedFonts();
     }
-  }, [allFonts, theme]);
+  }, [allFonts, theme, search]);
+
 
   useEffect(() => {
     if (allFonts.length > 0) {
@@ -63,7 +79,8 @@ export function useFonts() {
       const newPaginatedFonts = fonts.slice(start, end);
 
       let query = ''
-      for (let i = 0; i < end; i++) {
+      for (let i = 0; i < newPaginatedFonts.length; i++) {
+
         query += (newPaginatedFonts[i].family).replace(' ', '+') + '|'
       }
 
@@ -80,14 +97,17 @@ export function useFonts() {
 
   function changeTheme(newFilters) {
     setTheme(newFilters);
-    console.log(newFilters)
+  }
+
+  function changeSearch(newSearch) {
+    setSearch(newSearch);
   }
 
   function changeAmount(newAmount) {
     setAmount(newAmount);
     setPageTotal(Math.ceil(fonts.length / newAmount) - 1);
-    getShownFonts();
+    getPaginatedFonts();
   }
 
-  return { fonts: paginatedFonts, pageTotal, page, changePage, changeTheme, changeAmount, stylesheet };
+  return { fonts: paginatedFonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, stylesheet };
 }
