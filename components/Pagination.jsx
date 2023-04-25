@@ -11,7 +11,7 @@ export default function Pagination({ page, changePage, pageTotal }) {
                 changePage(page - 1);
                 router.push("/#top");
             }}
-            className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded bg-gray-50 dark:bg-gray-950 dark:border-gray-800 dark:hover:bg-gray-800 rtl:rotate-180 hover:bg-gray-200 "
+            className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded disabled:hidden bg-gray-50 dark:bg-gray-950 dark:border-gray-800 dark:hover:bg-gray-800 rtl:rotate-180 hover:bg-gray-200 "
             disabled={page == 0}
         >
             <span className="sr-only">Next Page</span>
@@ -29,7 +29,7 @@ export default function Pagination({ page, changePage, pageTotal }) {
                 changePage(page + 1)
                 router.push("/#top");
             }}
-            className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded rtl:rotate-180 bg-gray-50 hover:bg-gray-200 dark:bg-gray-950 dark:border-gray-800 dark:hover:bg-gray-800"
+            className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded rtl:rotate-180 bg-gray-50 hover:bg-gray-200 dark:bg-gray-950 dark:border-gray-800 dark:hover:bg-gray-800 disabled:hidden"
             disabled={page == pageTotal}
         >
             <span className="sr-only">Next Page</span>
