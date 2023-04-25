@@ -9,7 +9,7 @@ export default function Filters({ setOptions, options }) {
 
     const inputCSS = "bg-white border-b-2 dark:bg-black text-inherit dark:border-gray-700 focus:border-black dark:focus:border-white focus:outline-none"
 
-    return (<div className="flex flex-wrap items-center justify-center w-full mb-2 border-black gap-x-2 dark:border-white">
+    return (<div className="flex flex-wrap items-center justify-center w-full mb-4 border-black gap-x-2 dark:border-white">
         <label htmlFor="search">Search:</label>
         <input className={inputCSS} id="sampleText" type="text" placeholder='Search...' value={options.search} onChange={(e) => setOptions.search(e.target.value)} />
 
