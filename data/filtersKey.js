@@ -1,12 +1,10 @@
 export const filtersKey = {
-    'favorites': ['Roboto', 'Lato', 'Inter'],
-    'magic': ['Amarante', 'Berkshire Swash'],
-    'fancy': ['Almendra', 'Almendra Display', 'Astloch'],
-    'fun': ['Barrio'],
-    'childlike': ['Balsamiq Sans', 'Gamja Flower', 'Bonbon'],
-    'handwriting': ['Bad Script', 'Beth Ellen', 'Dawning of a New Day'],
-    'less-known': ['Averia Gruesa Libre'],
-    'space': ['Bungee Hairline', 'Bruno Ace'],
-    'video-games': ['Nabla', 'BIZ UDMincho'],
-    'cool': ['Bokor']
+    'fancy': ['Almendra', 'Almendra Display', 'Astloch', 'Bokor', 'IM Fell English SC', 'Grenze Gotisch', 'UnifrakturMaguntia', 'Pirata One'],
+    'fun': ['Barrio', 'Averia Gruesa Libre', 'Rampart One', 'Nabla', 'BIZ UDMincho', 'Amarante', 'Berkshire Swash'],
+    'childlike': ['Balsamiq Sans', 'Gamja Flower', 'Bonbon', 'Capriola', 'Dongle', 'Slackey'],
+    'handwriting': ['Bad Script', 'Beth Ellen', 'Dawning of a New Day', 'La Belle Aurore'],
+    'space': ['Bungee Hairline', 'Bruno Ace', 'Audiowide', 'Bai Jamjuree', 'Share Tech Mono', 'Michroma', 'Oxanium', 'Goldman'],
+    'modern': ['DM Serif Text', 'Yatra One', 'Varela', 'Inter Tight', 'Krub', 'Allerta', 'Darker Grotesque', 'Krona One', 'Alexandria'],
+    'bold': ['Bebas Neue', 'Londrina Solid', 'Koulen', 'Bowlby One SC', 'Candal', 'Knewave'],
+    'code': ['IBM Plex Mono', 'Space Mono', 'Anonymous Pro', 'JetBrains Mono', 'Overpass Mono', 'M PLUS 1'],
 }
