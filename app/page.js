@@ -14,11 +14,11 @@ export default function Home() {
   const { theme } = useContext(ThemeContext);
   const { fonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, current, stylesheet } = useFonts();
 
-  const [sampleText, setSampleText] = useState('Spinx of black quartz hear my vow');
+  const [sampleText, setSampleText] = useState('Sphinx of black quartz judge my vow');
   const [fontSize, setFontSize] = useState(24);
 
   function reset() {
-    setSampleText('Spinx of black quartz hear my vow');
+    setSampleText('Sphinx of black quartz judge my vow');
     setFontSize(24);
     changeTheme('none');
     changeSearch('');

@@ -12,14 +12,14 @@ export default function Fonts({ fonts, options, stylesheet }) {
 
 function FontCard({ family, category, options }) {
 
-    const sampleText = options.sampleText == '' ? 'Spinx of black quartz hear my vow' : options.sampleText;
+    const sampleText = options.sampleText.trim() == '' ? 'Sphinx of black quartz judge my vow' : options.sampleText;
 
     return (<div
         key={family}
-        className="grid justify-between flex-1 p-4 pt-2 border border-gray-100 rounded shadow-md dark:border-gray-900 sm:p-6 sm:pt-4 min-h-[240px]"
+        className="grid justify-between p-4 pt-2 border border-gray-100 rounded shadow-md dark:border-gray-900 sm:p-6 sm:pt-4 min-h-[240px] min-w-[260px]"
     >
         <div>
-            <a href={`https://fonts.google.com/specimen/${family}`} target="_blank" className="font-semibold hover:underline font-lg marker:file:text-sm">
+            <a href={`https://fonts.google.com/specimen/${family}`} target="_blank" className="font-semibold hover:underline font-lg">
                 {family}
             </a>
             <p className="text-sm italic dark:text-white/60 text-black/60">
@@ -27,7 +27,7 @@ function FontCard({ family, category, options }) {
             </p>
         </div>
 
-        <div className="overflow-scroll">
+        <div className="grid items-start justify-start overflow-scroll">
             <h3 style={{ fontFamily: family + ', ' + category, fontSize: Math.max(Math.min(options.fontSize, 90), 12) }} className='p-1'>
                 {sampleText}
             </h3>
