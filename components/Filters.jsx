@@ -33,7 +33,7 @@ export default function Filters({ setOptions, options }) {
 
         <label htmlFor="theme">Theme:</label>
         <select className='bg-white text-inherit dark:bg-black' name="theme" id="theme" value={options.theme} onChange={(e) => {
-            e.target.value == 'none' ? setOptions.theme([]) : setOptions.theme([e.target.value])
+            e.target.value == 'none' ? setOptions.theme('none') : setOptions.theme(e.target.value)
         }}>
             <option value="none">none</option>
             {Object.keys(filtersKey).map(theme => <option key={theme} value={theme}>{theme}</option>)}
