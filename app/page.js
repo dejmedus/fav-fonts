@@ -43,7 +43,7 @@ export default function Home() {
   }
 
   return (
-    <main id="top" className={`${theme} flex flex-col items-center justify-between min-h-screen p-2 sm:p-6 md:p-12 lg:px-24`}>
+    <main id="top" className={`${theme} flex flex-col items-center justify-between min-h-screen p-2 sm:p-6 md:p-12 lg:px-20`}>
       <Filters setOptions={setOptions} options={options} />
       {fonts.length > 0 ? <Fonts fonts={fonts} options={options} stylesheet={stylesheet} /> : <LoadingFonts />}
       {pageTotal > 0 ? <Pagination page={page} changePage={changePage} pageTotal={pageTotal} /> : null}
