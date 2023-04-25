@@ -20,7 +20,7 @@
 - [X] Text typed into the custom text (type something) box should immediately change the sample text in each font card
 - [X] The sample text should return to the default sample if the input box (type something) no longer has any input
 - [X] Font size chooser should have at least four sizes and should immediately change the sample text font size in each font card
-- [ ] Implement the 'reset' icon on the far right of the major navigation; it should reset the page as if it were reloaded *(do not actually reload the page)*
+- [X] Implement the 'reset' icon on the far right of the major navigation; it should reset the page as if it were reloaded *(do not actually reload the page)*
 - [X] On load, the page should display fonts sorted by current popularity, as returned by the Google Fonts Developer API *(see below)*; this call should be server-side
 - [X] The search feature should be fully functional and display matching fonts (it's up to you if you want to do this via a 'submit' or through onchange)
 - [X] When the search input is cleared (via reset button or manually), the fonts should automatically display sorted by polarity again
