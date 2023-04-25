@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Fav Fonts',
   description: 'Sort Google Fonts by theme.',
+  icons: {
+    icon: '/favicon.png'
+  }
 }
 
 export default function RootLayout({ children }) {
