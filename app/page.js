@@ -1,10 +1,12 @@
 'use client'
-import { Pagination } from '@/components/Pagination';
-import { useFonts } from '@/hooks/useFonts'
 import { useState } from 'react'
+import { useFonts } from '@/hooks/useFonts'
+import { filtersKey } from '@/data/filtersKey';
+import { Pagination } from '@/components/Pagination';
+
 
 export default function Home() {
-  const { fonts, pageTotal, page, changePage, changeFilters, changeAmount, stylesheet } = useFonts();
+  const { fonts, pageTotal, page, changePage, changeTheme, changeAmount, stylesheet } = useFonts();
 
   const [sampleText, setSampleText] = useState('Spinx of black quartz');
   const [fontSize, setFontSize] = useState(24);
@@ -17,7 +19,8 @@ export default function Home() {
   const setOptions = {
     sampleText: setSampleText,
     fontSize: setFontSize,
-    amount: changeAmount
+    amount: changeAmount,
+    theme: changeTheme
   }
 
   return (
@@ -40,15 +43,23 @@ function Filters({ setOptions, options }) {
       <input className="border border-black" id="fontSize" type="number" placeholder='12' min="12" max="90" value={options.fontSize} onChange={(e) => setOptions.fontSize(e.target.value)} />
     </div>
     <div className='flex gap-2'>
-      <label htmlFor="amount">Fonts per page:</label>
+      <label htmlFor="amount">Per page:</label>
       <select name="amount" id="amount" defaultValue="50" onChange={(e) => {
         setOptions.amount(parseInt(e.target.value));
-        console.log(e.target.value);
       }}>
         <option value="25">25</option>
         <option value="50">50</option>
         <option value="100">100</option>
         <option value="150">150</option>
+      </select>
+    </div>
+    <div className='flex gap-2'>
+      <label htmlFor="theme">Theme:</label>
+      <select name="theme" id="theme" defaultValue="none" onChange={(e) => {
+        e.target.value == 'none' ? setOptions.theme([]) : setOptions.theme([e.target.value])
+      }}>
+        <option value="none">none</option>
+        {Object.keys(filtersKey).map(theme => <option value={theme}>{theme}</option>)}
       </select>
     </div>
   </div>)
