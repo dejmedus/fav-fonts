@@ -12,16 +12,16 @@ export default function Fonts({ fonts, options, stylesheet }) {
 
 function FontCard({ family, category, options }) {
 
-    const sampleText = options.sampleText == '' ? 'Spinx of Black Quartz' : options.sampleText;
+    const sampleText = options.sampleText == '' ? 'Spinx of black quartz hear my vow' : options.sampleText;
 
     return (<div
         key={family}
         className="flex-1 grid justify-between p-4 pt-2 border border-neutral-100 rounded shadow-md sm:p-6 sm:pt-4 basis-full sm:basis-5/12 md:basis-3/12 lg:basis-1/5 h-[220px]"
     >
         <div>
-            <h2 className="font-semibold font-lg marker:file:text-sm">
+            <a href={`https://fonts.google.com/specimen/${family}`} target="_blank" className="font-semibold hover:underline font-lg marker:file:text-sm">
                 {family}
-            </h2>
+            </a>
             <p className="text-sm italic border-b-1 border-black/80">
                 {category}
             </p>
