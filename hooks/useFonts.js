@@ -7,7 +7,7 @@ export function useFonts() {
   const [fonts, setFonts] = useState([]);
 
   const [search, setSearch] = useState('');
-  const [theme, setTheme] = useState([]);
+  const [theme, setTheme] = useState('none');
   const [amount, setAmount] = useState(50);
 
   const [pageTotal, setPageTotal] = useState(0);
@@ -43,9 +43,9 @@ export function useFonts() {
       let shownFonts = allFonts;
 
       // Theme
-      if (theme.length !== 0) {
-        const families = new Set(theme.flatMap(key => filtersKey[key]));
-        shownFonts = allFonts.filter(a => families.has(a.family));
+      if (theme !== 'none') {
+        const families = filtersKey[theme];
+        shownFonts = allFonts.filter(a => families.includes(a.family));
 
         if (shownFonts.length == 0) {
           console.error('No fonts of filter families')
@@ -95,19 +95,30 @@ export function useFonts() {
     }
   }
 
-  function changeTheme(newFilters) {
-    setTheme(newFilters);
+  const current = {
+    theme: theme,
+    search: search,
+    amount: amount
+  }
+
+  function changeTheme(newTheme) {
+    setTheme(newTheme);
+    current['theme'] = newTheme
   }
 
   function changeSearch(newSearch) {
     setSearch(newSearch);
+    current['search'] = newSearch
   }
 
   function changeAmount(newAmount) {
     setAmount(newAmount);
+    current['amount'] = newAmount
     setPageTotal(Math.ceil(fonts.length / newAmount) - 1);
     getPaginatedFonts();
   }
 
-  return { fonts: paginatedFonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, stylesheet };
+
+
+  return { fonts: paginatedFonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, current, stylesheet };
 }
