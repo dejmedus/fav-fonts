@@ -3,17 +3,17 @@
 *Structure*
 
 - [X] Header with minor navigation *(Logo and Catalog/Featured/Articles/About link list)*
-- [ ] Nav with Major navigation / page-manipulation *(search, custom text, font-size, dark/light mode, grid/list mode, and reset)*
+- [X] Nav with Major navigation / page-manipulation *(search, custom text, font-size, dark/light mode, ~~grid/list mode~~, and reset)*
 - [X] Main section for the font cards
 - [ ] ~~Font cards which display the Font Name, the sample text, and an add button (the font creator is not available via the api, so it is **not** required in tiers 2 or 3)~~
-- [ ] Button that allows user to click and scroll back up to the top *(there could be up to 959 fonts displayed, so you need this!)*
+- [X] Button that allows user to click and scroll back up to the top *(there could be up to 959 fonts displayed, so you need this!)*
 - [X] Footer section with your developer information
 
 *Style*
 
 - [X] Sample text in each card should be displayed in the corresponding font
-- [ ] Buttons/links should be evident (make sure the cursor changes, etc.)
-- [ ] Implement a way to handle overflow from sample text in font cards, as the font size is adjustable
+- [X] Buttons/links should be evident (make sure the cursor changes, etc.)
+- [X] Implement a way to handle overflow from sample text in font cards, as the font size is adjustable
 
 *Functionality*
 
@@ -30,12 +30,12 @@
 *Other*
 
 - [X] Your repo needs to have a robust README.md
-- [ ] Make sure that there are no errors in the developer console before submitting
+- [X] Make sure that there are no errors in the developer console before submitting (Except: `Warning: Extra attributes from the server: style` - which I assume is caused by one of my browser extensions)
 
 **Extras (Not Required)**
 
 - [ ] ~~Make your design fully responsive (small/large/portrait/landscape, etc.)~~
-- [ ] ~~Implement the light/dark mode toggle buttons~~
+- [X] Implement the light/dark mode toggle buttons
 - [ ] ~~Implement the change display icon so you can flip between a grid layout and a list layout for the font cards~~
 - [ ] ~~User creation and authentication: Add a login button to the page that allows registered users to login, or prompts new users to register. Once a user is authenticated, display somewhere on the page that they are logged in.~~
 - [ ] ~~Add a favorites feature with back-end persistence: one example of this would be to use cookies to point to the user's favorite list in your database. You'll need to add a "see favorites" button somewhere to toggle between the view of the user's favorite fonts and the searches / popularity sort.~~
