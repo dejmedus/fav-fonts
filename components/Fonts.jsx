@@ -16,13 +16,13 @@ function FontCard({ family, category, options }) {
 
     return (<div
         key={family}
-        className="flex-1 grid justify-between p-4 pt-2 border border-neutral-100 rounded shadow-md sm:p-6 sm:pt-4 basis-full sm:basis-5/12 md:basis-3/12 lg:basis-1/5 h-[220px]"
+        className="flex-1 grid justify-between p-4 pt-2 border border-gray-100 dark:border-gray-900 rounded shadow-md sm:p-6 sm:pt-4 basis-full sm:basis-5/12 md:basis-3/12 lg:basis-1/5 h-[220px]"
     >
         <div>
             <a href={`https://fonts.google.com/specimen/${family}`} target="_blank" className="font-semibold hover:underline font-lg marker:file:text-sm">
                 {family}
             </a>
-            <p className="text-sm italic border-b-1 border-black/80">
+            <p className="text-sm italic dark:text-white/60 text-black/60">
                 {category}
             </p>
         </div>

@@ -7,11 +7,9 @@
   --bg: white;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: white;
-    --bg: black;
-  }
+[data-theme="dark"] {
+  --text: white;
+  --bg: black;
 }
 
 html {

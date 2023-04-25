@@ -1,4 +1,5 @@
 import './globals.css'
+import { ThemeContextProvider } from '@/context/ThemeContext'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Inter } from 'next/font/google'
@@ -14,9 +15,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
+        <ThemeContextProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ThemeContextProvider>
       </body>
     </html>
   )

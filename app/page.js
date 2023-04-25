@@ -1,5 +1,7 @@
 'use client'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { ThemeContext } from '@/context/ThemeContext'
+
 import { useFonts } from '@/hooks/useFonts'
 
 import Filters from '@/components/Filters';
@@ -9,6 +11,7 @@ import Pagination from '@/components/Pagination';
 import Top from '@/components/Top'
 
 export default function Home() {
+  const { theme } = useContext(ThemeContext);
   const { fonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, current, stylesheet } = useFonts();
 
   const [sampleText, setSampleText] = useState('Spinx of black quartz hear my vow');
@@ -40,7 +43,7 @@ export default function Home() {
   }
 
   return (
-    <main id="top" className="flex flex-col items-center justify-between min-h-screen p-2 sm:p-6 md:p-12 lg:px-24">
+    <main id="top" className={`${theme} flex flex-col items-center justify-between min-h-screen p-2 sm:p-6 md:p-12 lg:px-24`}>
       <Filters setOptions={setOptions} options={options} />
       {fonts.length > 0 ? <Fonts fonts={fonts} options={options} stylesheet={stylesheet} /> : <LoadingFonts />}
       {pageTotal > 0 ? <Pagination page={page} changePage={changePage} pageTotal={pageTotal} /> : null}
