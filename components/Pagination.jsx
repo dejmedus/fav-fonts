@@ -1,16 +1,16 @@
 'use client'
 import { useRouter } from "next/navigation";
 
-export const Pagination = ({ page, changePage, pageTotal }) => {
+export default function Pagination({ page, changePage, pageTotal }) {
     const router = useRouter()
 
     return (<div className="inline-flex items-center justify-center gap-3 mt-8">
         <button
             onClick={() => {
                 changePage(page - 1);
-                router.push("/#topOfPage");
+                router.push("/#top");
             }}
-            className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded rtl:rotate-180 bg-neutral-50 hover:bg-neutral-200"
+            className="inline-flex items-center justify-center w-8 h-8 border border-neutral-100 rounded rtl:rotate-180 bg-neutral-50 hover:bg-neutral-200"
             disabled={page == 0}
         >
             <span className="sr-only">Next Page</span>
@@ -37,9 +37,9 @@ export const Pagination = ({ page, changePage, pageTotal }) => {
         <button
             onClick={() => {
                 changePage(page + 1)
-                router.push("/#topOfPage");
+                router.push("/#top");
             }}
-            className="inline-flex items-center justify-center w-8 h-8 border border-gray-100 rounded rtl:rotate-180 bg-neutral-50 hover:bg-neutral-200"
+            className="inline-flex items-center justify-center w-8 h-8 border border-neutral-100 rounded rtl:rotate-180 bg-neutral-50 hover:bg-neutral-200"
             disabled={page == pageTotal}
         >
             <span className="sr-only">Next Page</span>
