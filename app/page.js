@@ -6,6 +6,7 @@ import Filters from '@/components/Filters';
 import Fonts from '@/components/Fonts';
 import LoadingFonts from '@/components/LoadingFonts';
 import Pagination from '@/components/Pagination';
+import Top from '@/components/Top'
 
 export default function Home() {
   const { fonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, current, stylesheet } = useFonts();
@@ -43,6 +44,7 @@ export default function Home() {
       <Filters setOptions={setOptions} options={options} />
       {fonts.length > 0 ? <Fonts fonts={fonts} options={options} stylesheet={stylesheet} /> : <LoadingFonts />}
       {pageTotal > 0 ? <Pagination page={page} changePage={changePage} pageTotal={pageTotal} /> : null}
+      {fonts.length > 18 ? <Top /> : null}
     </main>
   )
 }
