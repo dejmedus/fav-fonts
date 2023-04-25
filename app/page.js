@@ -8,14 +8,25 @@ import LoadingFonts from '@/components/LoadingFonts';
 import Pagination from '@/components/Pagination';
 
 export default function Home() {
-  const { fonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, stylesheet } = useFonts();
+  const { fonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, current, stylesheet } = useFonts();
 
   const [sampleText, setSampleText] = useState('Spinx of black quartz hear my vow');
   const [fontSize, setFontSize] = useState(24);
 
+  function reset() {
+    setSampleText('Spinx of black quartz hear my vow');
+    setFontSize(24);
+    changeTheme('none');
+    changeSearch('');
+    changeAmount(50);
+  }
+
   const options = {
     sampleText: sampleText,
-    fontSize: fontSize
+    fontSize: fontSize,
+    amount: current.amount,
+    theme: current.theme,
+    search: current.search,
   }
 
   const setOptions = {
@@ -23,7 +34,8 @@ export default function Home() {
     fontSize: setFontSize,
     amount: changeAmount,
     theme: changeTheme,
-    search: changeSearch
+    search: changeSearch,
+    reset: reset
   }
 
   return (
