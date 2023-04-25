@@ -3,8 +3,10 @@ export const filtersKey = {
     'magic': ['Amarante', 'Berkshire Swash'],
     'fancy': ['Almendra', 'Almendra Display', 'Astloch'],
     'fun': ['Barrio'],
-    'childlike': ['Autour One', 'Balsamiq Sans', 'Gamja Flower'],
+    'childlike': ['Balsamiq Sans', 'Gamja Flower', 'Bonbon'],
     'handwriting': ['Bad Script', 'Beth Ellen', 'Dawning of a New Day'],
     'less-known': ['Averia Gruesa Libre'],
-    'space': ['Bungee Hairline']
+    'space': ['Bungee Hairline', 'Bruno Ace'],
+    'video-games': ['Nabla', 'BIZ UDMincho'],
+    'cool': ['Bokor']
 }
