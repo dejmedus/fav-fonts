@@ -22,7 +22,6 @@ export function useFonts() {
 
 
   useEffect(() => {
-    console.log('fetching google fonts');
     async function getFontsData() {
       // fetch webfonts from api route
       const res = await fetch('/api/webfonts');
@@ -48,18 +47,14 @@ export function useFonts() {
         shownFonts = allFonts.filter(a => families.includes(a.family));
 
         if (shownFonts.length == 0) {
-          console.error('No fonts of filter families')
-          shownFonts = allFonts
+          shownFonts = allFonts;
         }
       }
 
       // Search
       if (search !== '') {
         const searchResults = shownFonts.filter(a => a.family.toLowerCase().includes(search));
-        if (searchResults.length == 0) {
-          console.error(`No results for ${search}`)
-        }
-        else {
+        if (searchResults.length != 0) {
           shownFonts = searchResults;
         }
       }
@@ -73,7 +68,6 @@ export function useFonts() {
 
   useEffect(() => {
     if (allFonts.length > 0) {
-      console.log('Updating paginated fonts.');
       const start = page * amount;
       const end = Math.min(start + amount, fonts.length);
       const newPaginatedFonts = fonts.slice(start, end);
@@ -89,16 +83,16 @@ export function useFonts() {
     }
   }, [page, reset])
 
-  function changePage(newPage) {
-    if (newPage >= 0 && newPage <= pageTotal) {
-      setPage(newPage);
-    }
-  }
-
   const current = {
     theme: theme,
     search: search,
     amount: amount
+  }
+
+  function changePage(newPage) {
+    if (newPage >= 0 && newPage <= pageTotal) {
+      setPage(newPage);
+    }
   }
 
   function changeTheme(newTheme) {
@@ -117,7 +111,6 @@ export function useFonts() {
     setPageTotal(Math.ceil(fonts.length / newAmount) - 1);
     getPaginatedFonts();
   }
-
 
 
   return { fonts: paginatedFonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, current, stylesheet };
