@@ -10,7 +10,7 @@ import Pagination from '@/components/Pagination';
 export default function Home() {
   const { fonts, pageTotal, page, changePage, changeTheme, changeSearch, changeAmount, stylesheet } = useFonts();
 
-  const [sampleText, setSampleText] = useState('Spinx of black quartz');
+  const [sampleText, setSampleText] = useState('Spinx of black quartz hear my vow');
   const [fontSize, setFontSize] = useState(24);
 
   const options = {
