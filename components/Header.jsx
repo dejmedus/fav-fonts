@@ -4,11 +4,12 @@ import Link from "next/link"
 import { usePathname } from 'next/navigation';
 import { useContext } from 'react'
 import { ThemeContext } from '@/context/ThemeContext'
-import { HeartSVG } from '@/assets/svg/icons'
+import { SunSVG, MoonSVG, HeartSVG } from '@/assets/svg/icons'
+
 
 export default function Header() {
     const currentPath = usePathname();
-    const { theme } = useContext(ThemeContext);
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
     return (
         <header aria-label="Site Header" className={theme}>
@@ -25,9 +26,12 @@ export default function Header() {
                     <nav aria-label="Site Nav" className="justify-end hidden w-full md:flex">
                         <ul className="flex items-center gap-6 text-sm">
                             <Navlink name="Catalog" path="/" currentPath={currentPath} />
-                            <Navlink name="Featured" path="/featured" currentPath={currentPath} />
-                            <Navlink name="Articles" path="/articles" currentPath={currentPath} />
                             <Navlink name="About" path="/about" currentPath={currentPath} />
+                            <li>
+                                <button onClick={() => toggleTheme()} className="p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800">
+                                    {theme == 'dark' ? <MoonSVG /> : <SunSVG />}
+                                </button>
+                            </li>
                         </ul>
                     </nav>
                 </div>
