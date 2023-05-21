@@ -16,7 +16,7 @@ function FontCard({ family, category, options }) {
 
     return (<div
         key={family}
-        className="p-4 pt-2 border border-gray-100 rounded shadow-md dark:border-gray-900 sm:p-6 sm:pt-4 min-h-[240px] min-w-[260px]"
+        className="p-4 pt-2 border border-gray-100 rounded shadow-md dark:border-gray-900 sm:p-6 sm:pt-4 min-h-[240px]"
     >
         <div>
             <a href={`https://fonts.google.com/specimen/${family.replace(' ', '+')}`} target="_blank" className="font-semibold hover:underline font-lg">
